@@ -1,52 +1,109 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #000000;
+:root {
+  --outer-background-color: rgb(153, 9, 9);
 }
 
-.greater-back {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    height: 90%;
-    background-color: rgb(219, 7, 7);
-    border: 25px solid rgb(153, 9, 9);
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: black;
+  padding: 100px
+}
+
+.outer-back {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  height: 90vh;
+  background-color: var(--outer-background-color);
+  border: 25px solid var(--outer-background-color);
+  border-radius: 15px;
+}
+
+.inner-back {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(219, 7, 7);
+  width: 100%;
+  z-index: 1;
+  border-radius: 12px;
+
 }
 
 .game-board-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 150px);
-    grid-template-rows: repeat(4, 200px);
-    gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 150px);
+  grid-template-rows: repeat(4, 200px);
+  margin: 50px 0px 0 25px;
+  gap: 10px;
+  z-index: 2;
 }
 
 .card {
-    width: 120px;
-    height: 180px;
-    background-color: rgb(77, 35, 35);
-    border: 3px solid gold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 5em;
-    color: gold;
-    cursor: pointer;
-    border-radius: 12px;
-    user-select: none;
-    position: relative;
+  width: 120px;
+  height: 180px;
+  background-color: rgb(77, 35, 35);
+  background: linear-gradient(
+    rgb(77, 35, 35),
+    rgb(202, 39, 85),
+    rgb(94, 9, 9));
+    color: black;
+    cursor: default;
+  border: 3px solid gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  color: gold;
+  cursor: pointer;
+  border-radius: 12px;
+  user-select: none;
+  position: relative;
+  perspective: 1000px;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
 }
 
 .card.flipped {
-    background-color: rgb(77, 35, 35);
-    color: gold;
+  background-color: rgb(77, 35, 35);
+  color: gold;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 12px;
+}
+
+.card-front {
+  background: linear-gradient(rgb(77, 35, 35), rgb(202, 39, 85), rgb(94, 9, 9));
+  border: 3px solid gold;
+  color: gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+}
+
+.card-back {
+  background-color: linear-gradient(rgb(77, 35, 35), rgb(202, 39, 85), rgb(94, 9, 9));
+  color: gold;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
 }
 
 .card.match {
-    background-color: rgb(153, 9, 9);
-    color: black;
-    cursor: default;
+  background-color: linear-gradient(rgb(77, 35, 35), rgb(202, 39, 85), rgb(94, 9, 9));
+  color: gold;
+  cursor: default;
 }
