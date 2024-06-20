@@ -11,7 +11,7 @@ body {
   padding: 100px
 }
 
-/* .outer-back {
+.outer-back {
   display: flex;
   justify-content: center;
   width: 90%;
@@ -19,7 +19,7 @@ body {
   background-color: var(--outer-background-color);
   border: 25px solid var(--outer-background-color);
   border-radius: 15px;
-} */
+}
 
 .inner-back {
   display: flex;
